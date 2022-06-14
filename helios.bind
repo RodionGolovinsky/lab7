@@ -1,0 +1,1 @@
+sshpass -p bjz126 ssh -p 2222 -L 5488:pg:5432 s336493@helios.se.ifmo.ru
