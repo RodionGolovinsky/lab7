@@ -7,10 +7,11 @@ public enum EColor {
     WHITE;
 
     public static String nameList() {
-        String nameList = "";
+        StringBuilder nameListBuilder = new StringBuilder();
         for (EColor eyeColor : values()) {
-            nameList += eyeColor.name() + ", ";
+            nameListBuilder.append(eyeColor.name()).append(", ");
         }
+        String nameList = nameListBuilder.toString();
         return nameList.substring(0, nameList.length() - 2);
     }
 }

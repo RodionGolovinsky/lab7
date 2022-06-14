@@ -6,8 +6,8 @@ import utility.Console;
 import utility.QuestionAboutPerson;
 
 public class PrintUniqueLocationCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private QuestionAboutPerson questionAboutPerson;
+    private final CollectionManager collectionManager;
+    private final QuestionAboutPerson questionAboutPerson;
 
 
     public PrintUniqueLocationCommand(CollectionManager collectionManager, QuestionAboutPerson questionAboutPerson) {

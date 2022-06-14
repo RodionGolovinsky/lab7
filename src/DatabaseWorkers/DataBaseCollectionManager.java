@@ -75,8 +75,8 @@ public class DataBaseCollectionManager {
     private final String UPDATE_PERSONS_LOCATION_NAME_COLUMN_BY_ID = "UPDATE " + DataBaseHandler.PERSONS_TABLE + " SET " +
             DataBaseHandler.PERSONS_TABLE_LOCATION_NAME_COLUMN + " = ?" + " WHERE " +
             DataBaseHandler.PERSONS_TABLE_ID_COLUMN + " = ?";
-    private DataBaseHandler databaseHandler;
-    private DataBaseUserManager databaseUserManager;
+    private final DataBaseHandler databaseHandler;
+    private final DataBaseUserManager databaseUserManager;
 
     public DataBaseCollectionManager(DataBaseHandler databaseHandler, DataBaseUserManager databaseUserManager) {
         this.databaseHandler = databaseHandler;
@@ -86,9 +86,8 @@ public class DataBaseCollectionManager {
     /**
      * Create Person.
      *
-     * @param resultSet Result set parametres of Marine.
+     * @param resultSet Result set parameters of Marine.
      * @return New Marine.
-     * @throws SQLException When there's exception inside.
      */
     private Person createPerson(ResultSet resultSet) {
         try {
@@ -168,10 +167,10 @@ public class DataBaseCollectionManager {
             preparedInsertPERSONStatement.setString(12, newPerson.getLocation().getName());
             preparedInsertPERSONStatement.setLong(13, databaseUserManager.getUserIdByUsername(user));
             if (preparedInsertPERSONStatement.executeUpdate() == 0) throw new SQLException();
-            ResultSet generatedPERSONSkeys = preparedInsertPERSONStatement.getGeneratedKeys();//???
+            ResultSet generatedPersonKeys = preparedInsertPERSONStatement.getGeneratedKeys();//???
             long personID;
-            if (generatedPERSONSkeys.next()) {
-                personID = generatedPERSONSkeys.getLong(1);
+            if (generatedPersonKeys.next()) {
+                personID = generatedPersonKeys.getLong(1);
             } else throw new SQLException();
             databaseHandler.commit();
             newPerson.setOwner(user);
@@ -189,7 +188,7 @@ public class DataBaseCollectionManager {
 
     /**
      * @param newPerson Person raw.
-     * @param personID  Id of PERSONS.
+     * @param personID  ID of PERSONS.
      * @throws DatabaseHandlingException When there's exception inside.
      */
     public void updatePERSONSById(long personID, Person newPerson) throws DatabaseHandlingException {
@@ -311,7 +310,7 @@ public class DataBaseCollectionManager {
     /**
      * Delete Person by id.
      *
-     * @param personID Id of PERSON.
+     * @param personID ID of PERSON.
      * @throws DatabaseHandlingException When there's exception inside.
      */
     public void deletePERSONSById(long personID) throws DatabaseHandlingException {
@@ -330,7 +329,7 @@ public class DataBaseCollectionManager {
     /**
      * Checks Person user id.
      *
-     * @param PersonId Id of person.
+     * @param PersonId ID of person.
      * @param user     Owner of person.
      * @return Is everything ok.
      * @throws DatabaseHandlingException When there's exception inside.

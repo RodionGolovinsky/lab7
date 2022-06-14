@@ -15,8 +15,8 @@ public class QuestionAboutPerson {
     private final double MIN_HEIGHT = 0;
     private final double MIN_Y = -815;
 
-    private Scanner userScanner;
-    private boolean fileMode;
+    private final Scanner userScanner;
+    private final boolean fileMode;
 
     public QuestionAboutPerson(Scanner userScanner) {
         this.userScanner = userScanner;
@@ -409,7 +409,7 @@ public class QuestionAboutPerson {
                 System.exit(0);
             }
         }
-        return (answer.equals("+")) ? true : false;
+        return answer.equals("+");
     }
 
     public String toString() {

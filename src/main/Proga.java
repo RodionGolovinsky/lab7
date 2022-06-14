@@ -10,6 +10,7 @@ public class Proga {
     public static final String PS2 = "> ";
 
     public static void main(String[] args) {
+
         try {
             PropHelper.getProperties();
             DataBaseHandler dataBaseHandler = new DataBaseHandler(PropHelper.getHost(), Integer.parseInt(PropHelper.getPort()), PropHelper.getUser(), PropHelper.getPassword(), PropHelper.getBasename());
@@ -31,7 +32,7 @@ public class Proga {
                 } else arguments = "";
                 commandManager.execute(commandName, arguments);
             }
-        } catch (RuntimeException e) {
+        }catch (RuntimeException e) {
             e.printStackTrace();
             System.out.println("Произошла катастрофа.");
         }

@@ -1,10 +1,10 @@
 package classesandenums;
 
 public class Location {
-    private Double x;
-    private double y;
-    private Long z;
-    private String name;
+    private final Double x;
+    private final double y;
+    private final Long z;
+    private final String name;
 
     public Location(Double x, double y, Long z, String name) {
         this.x = x;

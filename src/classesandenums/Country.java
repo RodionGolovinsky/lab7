@@ -6,10 +6,11 @@ package classesandenums;
      THAILAND;
 
     public static String nameList() {
-        String nameList = "";
+        StringBuilder nameListBuilder = new StringBuilder();
         for (Country nationality : values()) {
-            nameList += nationality.name() + ", ";
+            nameListBuilder.append(nationality.name()).append(", ");
         }
+        String nameList = nameListBuilder.toString();
         return nameList.substring(0, nameList.length()-2);
     }
  }

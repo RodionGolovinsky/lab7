@@ -1,8 +1,8 @@
 package commands;
 
 public abstract class AbstractCommand implements Command { //AbstractCommand реализовывает интерфейс Command
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
 
     public AbstractCommand(String name, String description) {
         this.name = name;

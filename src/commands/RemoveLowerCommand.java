@@ -5,7 +5,6 @@ import classesandenums.User;
 import exceptions.CollectionIsEmptyException;
 import exceptions.IncorrectInputInScriptException;
 import exceptions.PersonNotFoundException;
-import exceptions.UserAccessException;
 import utility.CollectionManager;
 import utility.Console;
 import utility.QuestionAboutPerson;
@@ -13,9 +12,9 @@ import utility.QuestionAboutPerson;
 import java.time.LocalDateTime;
 
 public class RemoveLowerCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private QuestionAboutPerson questionAboutPerson;
-    private User user;
+    private final CollectionManager collectionManager;
+    private final QuestionAboutPerson questionAboutPerson;
+    private final User user;
 
     public RemoveLowerCommand(CollectionManager collectionManager, QuestionAboutPerson questionAboutPerson, User user) {
         super("remove_lower {element}", "удалить из коллекции все элементы, меньшие, чем заданный");

@@ -7,10 +7,11 @@ public enum HColor {
     WHITE;
 
     public static String nameList() {
-        String nameList = "";
+        StringBuilder nameListBuilder = new StringBuilder();
         for (HColor hairColor : values()) {
-            nameList += hairColor.name() + ", ";
+            nameListBuilder.append(hairColor.name()).append(", ");
         }
+        String nameList = nameListBuilder.toString();
         return nameList.substring(0, nameList.length() - 2);
     }
 }

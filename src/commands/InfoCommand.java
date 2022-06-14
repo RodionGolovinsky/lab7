@@ -7,7 +7,7 @@ import utility.Console;
 import java.time.LocalDateTime;
 
 public class InfoCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
+    private final CollectionManager collectionManager;
 
     public InfoCommand(CollectionManager collectionManager) {
         super("info", "вывести информацию о коллекции");

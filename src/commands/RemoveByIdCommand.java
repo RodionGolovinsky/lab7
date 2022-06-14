@@ -10,8 +10,8 @@ import utility.CollectionManager;
 import utility.Console;
 
 public class RemoveByIdCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private User user;
+    private final CollectionManager collectionManager;
+    private final User user;
 
     public RemoveByIdCommand(CollectionManager collectionManager, User user) {
         super("remove_by_id <ID>", "удалить элемент из коллекции по ID");

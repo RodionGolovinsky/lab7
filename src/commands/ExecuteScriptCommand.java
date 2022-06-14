@@ -30,7 +30,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
                     arguments = commandNameAndArguments[1];
                 } else arguments = "";
                 commandManager.execute(commandName, arguments);
-                System.out.println("");
+                System.out.println();
             }
         } catch (IOException e) {
             Console.printerror("Похоже у вас недостаточно прав доступа!");

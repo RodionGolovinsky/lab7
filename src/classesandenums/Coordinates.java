@@ -1,10 +1,10 @@
 package classesandenums;
 
 public class Coordinates {
-    private double x;
-    private long y;
-    private static double max_x = 935;
-    private static long min_y = -815;
+    private final double x;
+    private final long y;
+    private static final double max_x = 935;
+    private static final long min_y = -815;
 
     public Coordinates(double x, long y) {
         this.x = x;
@@ -12,13 +12,11 @@ public class Coordinates {
     }
 
     public static boolean checkValidСX(double x) {
-        if (x > max_x) return false;
-        return true;
+        return !(x > max_x);
     }
 
     public static boolean checkValidСY(long y) {
-        if (y < min_y) return false;
-        return true;
+        return y >= min_y;
     }
 
     public double getX() {

@@ -7,11 +7,8 @@ import classesandenums.User;
 import exceptions.DatabaseHandlingException;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
-import java.util.Set;
-
 public class CollectionManager {
     private static LinkedHashSet<Person> personCollection = new LinkedHashSet<>();
     private LocalDateTime lastInitTime;
@@ -39,12 +36,12 @@ public class CollectionManager {
      */
     public void getArrayOfUniqueLocation() {
         LinkedList<Location> Locations = new LinkedList<>();
-        personCollection.stream().forEach((P) -> {
+        personCollection.forEach((P) -> {
             if (!Locations.contains(P.getLocation())) {
                 Locations.add(P.getLocation());
             }
         });
-        Locations.stream().forEach(System.out::println);
+        Locations.forEach(System.out::println);
     }
 
     /**
@@ -140,6 +137,11 @@ public class CollectionManager {
      */
     public void removeFromCollection(Person person) {
         personCollection.remove(person);
+        try {
+            dataBaseCollectionManager.deletePERSONSById(person.getId());
+        } catch (DatabaseHandlingException e) {
+            Console.printerror("Ошибка удаления человека из коллекции!");
+        }
     }
 
     /**
@@ -212,12 +214,12 @@ public class CollectionManager {
     public String toString() {
         if (personCollection.isEmpty()) return "Коллекция пуста!";
         Person[] people = collectionToArray();
-        String info = "";
+        StringBuilder info = new StringBuilder();
         for (Person person : personCollection) {
-            info += person;
-            if (person != people[people.length - 1]) info += "\n\n";
+            info.append(person);
+            if (person != people[people.length - 1]) info.append("\n\n");
         }
-        return info;
+        return info.toString();
     }
 
     public void updatePerson(long id, Person person) {

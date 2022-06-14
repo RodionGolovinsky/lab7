@@ -13,7 +13,7 @@ public class Person implements Comparable<Person> {
     private Country nationality;
     private Location location;
     private User owner;
-    private static double min_height = 0;
+    private static final double min_height = 0;
 
     public Person(Long id, String name, Coordinates coordinates, LocalDateTime creationDate, int height,
                   EColor eyeColor, HColor hairColor, Country nationality, Location location, User user) {
@@ -84,8 +84,7 @@ public class Person implements Comparable<Person> {
     }
 
     public static boolean checkValidHeight(int height) {
-        if (height < min_height) return false;
-        return true;
+        return !(height < min_height);
     }
 
     public String toString() {

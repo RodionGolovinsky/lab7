@@ -8,9 +8,9 @@ import utility.QuestionAboutPerson;
 import java.time.LocalDateTime;
 
 public class UpdateCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private QuestionAboutPerson questionAboutPerson;
-    private User user;
+    private final CollectionManager collectionManager;
+    private final QuestionAboutPerson questionAboutPerson;
+    private final User user;
 
     public UpdateCommand(CollectionManager collectionManager, QuestionAboutPerson questionAboutPerson, User user) {
         super("update <ID> {element}", "обновить значение элемента коллекции по ID");

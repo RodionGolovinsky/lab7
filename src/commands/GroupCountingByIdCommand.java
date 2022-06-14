@@ -5,7 +5,7 @@ import utility.CollectionManager;
 
 
 public class GroupCountingByIdCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
+    private final CollectionManager collectionManager;
 
     public GroupCountingByIdCommand(CollectionManager collectionManager) {
         super("group_counting_by_id", "сгруппировать элементы коллекции по значению ID поля");

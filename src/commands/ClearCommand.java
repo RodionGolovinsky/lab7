@@ -5,8 +5,8 @@ import utility.CollectionManager;
 import utility.Console;
 
 public class ClearCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private User user;
+    private final CollectionManager collectionManager;
+    private final User user;
 
     public ClearCommand(CollectionManager collectionManager, User user) {
         super("clear", "очистить коллекцию");

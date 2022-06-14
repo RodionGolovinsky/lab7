@@ -10,9 +10,9 @@ import utility.QuestionAboutPerson;
 import java.time.LocalDateTime;
 
 public class AddIfMinCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private QuestionAboutPerson questionAboutPerson;
-    private User user;
+    private final CollectionManager collectionManager;
+    private final QuestionAboutPerson questionAboutPerson;
+    private final User user;
 
     public AddIfMinCommand(CollectionManager collectionManager, QuestionAboutPerson questionAboutPerson, User user) {
         super("add_if_min {element}", "добавить новый элемент, если его значение меньше, чем у наименьшего");

@@ -9,8 +9,8 @@ import commands.*;
  * Управляет командами.
  */
 public class CommandManager {
-    private HashMap<String, Command> commands;
-    private User user;
+    private final HashMap<String, Command> commands;
+    private final User user;
 
     public CommandManager(CollectionManager collectionManager, QuestionAboutPerson questionAboutPerson, User user) {
         commands = new HashMap<>();

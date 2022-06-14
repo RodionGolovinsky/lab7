@@ -11,9 +11,9 @@ import utility.QuestionAboutPerson;
 import java.time.LocalDateTime;
 
 public class AddCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private QuestionAboutPerson questionAboutPerson;
-    private User user;
+    private final CollectionManager collectionManager;
+    private final QuestionAboutPerson questionAboutPerson;
+    private final User user;
 
     public AddCommand(CollectionManager collectionManager, QuestionAboutPerson questionAboutPerson, User user) {
         super("add ", "добавить новый элемент в коллекцию");

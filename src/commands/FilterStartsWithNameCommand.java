@@ -6,8 +6,8 @@ import utility.Console;
 import utility.QuestionAboutPerson;
 
 public class FilterStartsWithNameCommand extends AbstractCommand {
-    private CollectionManager collectionManager;
-    private QuestionAboutPerson questionAboutPerson;
+    private final CollectionManager collectionManager;
+    private final QuestionAboutPerson questionAboutPerson;
 
     public FilterStartsWithNameCommand(CollectionManager collectionManager, QuestionAboutPerson questionAboutPerson) {
         super("filter_starts_with_name (name)", "выводит элементы, значение поля name которых начинается с заданной подстроки");

@@ -17,6 +17,7 @@ public class FileReaderForScript {
             } catch (InvalidPathException exception) {
                 Console.printerror("Ошибка чтения пути файла");
             }
+            assert pathInput != null;
             if (!pathInput.isAbsolute()) {
                 Console.printerror("Это не абсолютный путь до файла." + "\n");
                 continue;

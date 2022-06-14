@@ -6,8 +6,7 @@ import exceptions.DatabaseHandlingException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Stack;
+
 
 public class DataBaseUserManager {
     // USER_TABLE
@@ -25,7 +24,7 @@ public class DataBaseUserManager {
 
     private final String GET_USER_COUNT = "SELECT COUNT(" + DataBaseHandler.USER_TABLE_ID_COLUMN +") FROM " + DataBaseHandler.USER_TABLE; //????
 
-    private DataBaseHandler databaseHandler;
+    private final DataBaseHandler databaseHandler;
 
     public DataBaseUserManager(DataBaseHandler databaseHandler) {
 
@@ -143,7 +142,7 @@ public class DataBaseUserManager {
             if (getUserIdByUsername(user) != -1) return false;
             PreparedStatement preparedGetUserCount = databaseHandler.getPreparedStatement(GET_USER_COUNT, false);
             ResultSet resultSet = preparedGetUserCount.executeQuery();
-            Long userId = 1L;
+            long userId = 1L;
             if(resultSet.next()){
                 userId=resultSet.getLong("count") + 1;
             }

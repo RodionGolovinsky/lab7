@@ -3,13 +3,17 @@ package DatabaseWorkers;
 import classesandenums.User;
 import exceptions.DatabaseHandlingException;
 import org.apache.commons.codec.digest.DigestUtils;
+import utility.Console;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AuthorizationHelper {
 
-    private Scanner scanner;
-    private DataBaseUserManager dataBaseUserManager;
+    private final Scanner scanner;
+    private final DataBaseUserManager dataBaseUserManager;
 
     public AuthorizationHelper(Scanner scanner, DataBaseUserManager dataBaseUserManager) {
         this.scanner = scanner;
@@ -26,7 +30,7 @@ public class AuthorizationHelper {
                     String login = scanner.nextLine();
                     try {
                         dataBaseUserManager.getUserByUsername(login);
-                        System.out.println("Пользователь с таким логином уже существует");
+                        Console.printerror("Пользователь с таким логином уже существует");
                     } catch (SQLException e) {
                         System.out.print("Введите пароль: ");
                         String rawPassword = scanner.nextLine();
@@ -43,16 +47,17 @@ public class AuthorizationHelper {
                     System.out.print("Введите пароль: ");
                     String rawPassword = scanner.nextLine();
                     String password = DigestUtils.shaHex(rawPassword);
+
                     user = new User(login, password);
                     if (dataBaseUserManager.checkUserByUsernameAndPassword(user)) {
                         System.out.println("Авторизация прошла успешно!");
                         success = true;
                     } else {
-                        System.out.println("Логин или пароль введён неверно");
+                        Console.printerror("Логин или пароль введён неверно");
                     }
                 }
             } catch (DatabaseHandlingException exception) {
-                System.out.println("Отказано в авторизации");
+                Console.printerror("Отказано в авторизации");
             }
         }
         return user;
